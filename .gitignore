@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+demo/webxr/WebXR Demo/Library/
+demo/webxr/WebXR Demo/Logs/
+demo/webxr/WebXR Demo/Temp/
