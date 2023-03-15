@@ -6,9 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Samples/WebXR Interactions/0.16.3-preview/Sample Scene/Scenes/Desert.unity
+    guid: 85380d4847db7b74a850284461349c36
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 21ad554e5aba1d94182acdcbd039a538, type: 2}
     WebXR.Settings: {fileID: 11400000, guid: 6afc0affd1d27f748a1aecc972c1e665, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 48f00462e7a79be4ca82db0d5114a02b, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 903b040d201a77b4e8834d3d92919d01, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 3f5097c295c5bc14c8c3c00078c5b9c2, type: 2}
