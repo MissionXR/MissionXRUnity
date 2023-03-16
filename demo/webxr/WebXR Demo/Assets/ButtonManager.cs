@@ -10,7 +10,7 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class ButtonManager : MonoBehaviour
 
     private void OnEnable() 
     {
+        Debug.Log($"Amount of buttons = {buttons.Count}");   
         buttons.ForEach(button => {
             button.OnActivate.AddListener(ButtonActivate);
         });

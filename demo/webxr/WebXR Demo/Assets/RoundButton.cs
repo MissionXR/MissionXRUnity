@@ -8,19 +8,23 @@ public class RoundButton : MonoBehaviour
     [SerializeField] Material normalMaterial;
     [SerializeField] Material pushedMaterial;
     [SerializeField] Material activateMaterial;
-    [SerializeField] MeshRenderer mesh;
 
     public UnityEvent OnActivate;
     public UnityEvent OnDeactivate;
 
+    MeshRenderer meshRenderer;
     bool activated = false;
+    bool willActivate = false;
+
+    private HashSet<Collider> colliders = new HashSet<Collider>();
 
     // Start is called before the first frame update
     void Start()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
         if (OnActivate == null) {
             OnActivate = new UnityEvent();
-        }        
+        }         
         if (OnDeactivate == null) {
             OnDeactivate = new UnityEvent();
         }       
@@ -29,23 +33,31 @@ public class RoundButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        mesh.material = pushedMaterial;
+        colliders.Add(other);
+
+        meshRenderer.material = pushedMaterial;
+        willActivate = !activated;
     }
 
-    private void OnTriggerExit()
+    private void OnTriggerExit(Collider other)
     {
-        if (!activated) {
+        colliders.Remove(other);
+        if (colliders.Count > 0) {
+            return;
+        }
+
+        if (willActivate) {
+            meshRenderer.material = activateMaterial;
             OnActivate.Invoke();
-            mesh.material = activateMaterial;
             activated = true;
         } else {
+            meshRenderer.material = normalMaterial;
             OnDeactivate.Invoke();
-            mesh.material = normalMaterial;
             activated = false;
         }
     }
