@@ -22,18 +22,18 @@ public class ButtonManager : MonoBehaviour
     private void OnEnable() 
     {
         buttons.ForEach(button => {
-            button.OnCollide.AddListener(ButtonCollide);
+            button.OnActivate.AddListener(ButtonActivate);
         });
     }
     
     private void OnDisable() 
     {
         buttons.ForEach(button => {
-            button.OnCollide.RemoveListener(ButtonCollide);
+            button.OnActivate.RemoveListener(ButtonActivate);
         });
     }
 
-    private void ButtonCollide()
+    private void ButtonActivate()
     {
         Debug.Log("Button Collide!!!");
     }
